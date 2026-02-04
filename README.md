@@ -9,13 +9,13 @@
 
 
 ## ③アプリのデプロイURL
-https://miyazaki23.sakura.ne.jp/kadai9_php_sakura/team_admin.php
-
-https://miyazaki23.sakura.ne.jp/kadai9_php_sakura/order_kanban.php
+https://miyazaki23.sakura.ne.jp/kadai10_sakura/login/login.php
 
 ## ④アプリのログイン用IDまたはPassword（ある場合）
 - ID: なし
-- PW: なし
+- PW: 管理者用　admin123
+　　　　一般用　　user123
+
 
 ## ⑤工夫した点・こだわった点
 - 直感的なUI/UX: 一覧表形式の管理画面だけでなく、カード形式のカンバンボードにすることで操作しやすいことを意識
@@ -24,8 +24,13 @@ https://miyazaki23.sakura.ne.jp/kadai9_php_sakura/order_kanban.php
     - ディレクトリを整理。直下に全てまとめていたため、memberやteamごとにphpファイルをまとめた
     - ログイン認証の実装の下準備として、役割(member_type)を追加。選手、コーチ、監督、元メンバーなど
 
+- 【2/5変更点】
+    - ログイン認証を追加
+    - 管理者のみがメンバーの編集や削除をできるように、操作ボタンの表示/非表示を出し分け
+
+
 ## ⑥難しかった点・次回トライしたいこと（又は機能）
-- ログイン認証を実装したい: ユーザーごとの権限管理（管理者/一般ユーザー）の実装。
+- 次回、プロトタイプに近い内容を作りたい
 
 ## ⑦フリー項目（感想、シェアしたいこと等なんでも）
 - [感想]
