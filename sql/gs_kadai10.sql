@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 08, 2026 at 02:48 PM
+-- Generation Time: Feb 04, 2026 at 05:17 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `gs_kadai8`
+-- Database: `gs_kadai10`
 --
 
 -- --------------------------------------------------------
@@ -36,16 +36,6 @@ CREATE TABLE `game_orders` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `game_orders`
---
-
-INSERT INTO `game_orders` (`id`, `game_id`, `player_id`, `position_num`, `batting_order`, `created_at`) VALUES
-(1, 'k', 2, '3', 0, '2026-01-08 13:13:19'),
-(2, 'k', 1, '4', 1, '2026-01-08 13:13:19'),
-(3, '111', 2, '投', 3, '2026-01-08 13:27:50'),
-(4, '111', 1, '投', 5, '2026-01-08 13:27:50');
-
 -- --------------------------------------------------------
 
 --
@@ -56,15 +46,19 @@ CREATE TABLE `members` (
   `id` int(11) NOT NULL,
   `team_id` int(11) DEFAULT NULL,
   `player_name` varchar(100) NOT NULL,
-  `back_number` int(11) DEFAULT NULL
+  `back_number` int(11) DEFAULT NULL,
+  `member_type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `members`
 --
 
-INSERT INTO `members` (`id`, `team_id`, `player_name`, `back_number`) VALUES
-(2, 1, '坂本', 6);
+INSERT INTO `members` (`id`, `team_id`, `player_name`, `back_number`, `member_type`) VALUES
+(2, 1, '坂本', 6, 1),
+(4, 2, 'イチロー', 51, 3),
+(5, 2, 'DDDD', 100, 1),
+(7, 2, 'DDDD', 100, 1);
 
 -- --------------------------------------------------------
 
@@ -75,16 +69,18 @@ INSERT INTO `members` (`id`, `team_id`, `player_name`, `back_number`) VALUES
 CREATE TABLE `teams` (
   `id` int(11) NOT NULL,
   `team_name` varchar(100) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `admin_password` varchar(255) NOT NULL,
+  `user_password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `teams`
 --
 
-INSERT INTO `teams` (`id`, `team_name`, `created_at`) VALUES
-(1, '品川ヤンキース', '2026-01-08 13:11:47'),
-(2, '品川ヤンキース', '2026-01-08 13:11:50');
+INSERT INTO `teams` (`id`, `team_name`, `created_at`, `admin_password`, `user_password`) VALUES
+(1, '川崎ホークス', '2026-01-08 13:11:47', '$2y$10$2FpgWzhOjNzmHqBGLDbCv.5nnltvGPCVezxqX37f2gooaZ88tXvo6', '$2y$10$8/bDqIE5DWyRQWXhY5VHZuyBmGGE.1QHNuj3tAsFGDURpgD0QJNuS'),
+(2, '品川ヤンキース', '2026-01-08 13:11:50', '$2y$10$6SoCny326CxPQc7dXgfPVexivyec10jQ69ZrQyDQOzJhOvAJEvENK', '$2y$10$mY5WrpFTZaaH9ryLZQlBduD7uvgdiZSIHH6Ga3JMGKBUeW67y64KG');
 
 --
 -- Indexes for dumped tables
@@ -117,13 +113,13 @@ ALTER TABLE `teams`
 -- AUTO_INCREMENT for table `game_orders`
 --
 ALTER TABLE `game_orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `teams`
