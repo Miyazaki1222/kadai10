@@ -1,0 +1,45 @@
+/* 選手リストの高さ固定とスクロール */
+.player-list {
+    min-height: 50px;
+    padding: 5px;
+    background-color: #f8f9fa;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+}
+
+.bench-area {
+    height: 75vh;
+    overflow-y: auto;
+    background-color: #eee;
+}
+
+/* オーダースロットの調整 */
+.order-slot {
+    min-height: 45px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+/* 選手カードのスリム化 */
+.player-item {
+    background: white;
+    padding: 6px 10px;
+    margin: 2px 0;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    cursor: grab;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.player-item:active { cursor: grabbing; }
+
+/* ドラッグ中のスタイル */
+.sortable-ghost {
+    opacity: 0.3;
+    background-color: #0d6efd !important;
+}
+
+
